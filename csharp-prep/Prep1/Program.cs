@@ -15,6 +15,7 @@ class Program
 	    Console.Write("What is your last name? ");
 	    lastName = Console.ReadLine();
 
+	    // Print out the name like James Bond would say it
 	    Console.WriteLine($"Your name is {lastName}, {firstName} {lastName}.");
     }
 }
