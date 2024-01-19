@@ -3,7 +3,7 @@ using System;
 public class PromptGenerator
 {
 	// Attributes
-	private List<string> _prompts = new List<string>();
+	public List<string> _prompts = new List<string>();
 	
 	
 	public PromptGenerator()
