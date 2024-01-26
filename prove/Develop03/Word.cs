@@ -14,11 +14,11 @@ class Word
 	public void Hide()
 	{
 		_isHidden = true;
-	}
+	}	
 
 	public void Show()
 	{
-		Console.Write($" {_text} ");
+		_isHidden = false;
 	}
 
 	public bool IsHidden()
@@ -28,6 +28,18 @@ class Word
 
 	public string GetDisplayText()
 	{
-		return _text;
+		if (IsHidden() == false)
+		{
+			return $" {_text} ";
+		}
+		int len = _text.Length;
+		int i;
+		string text = " ";
+
+		for (i = 0; i < len; i++)
+		{
+			text += "_";
+		}
+		return $"{text} ";
 	}
 }
