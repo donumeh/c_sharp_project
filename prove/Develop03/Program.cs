@@ -12,6 +12,8 @@ class Program
 		int index;
 
 		// Exceeding requirement
+		// By saving some scriptures and picking random one
+		// for printing
 		string one = "For God so love the world that He gave his only begotten son, and whosoever believeth in Him shall not perish but have everlasting life";
 		Reference refr = new Reference("John", 3, 16);
 		references.Add(refr);
