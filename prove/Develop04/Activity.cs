@@ -39,6 +39,7 @@ class Activity
 		Spinner(5);
 		Console.WriteLine();
 		Console.WriteLine($"You have completed another {_duration} seconds of the Breathing Activity");
+		Spinner(5);
 	}
 
 	// Show Spinner
