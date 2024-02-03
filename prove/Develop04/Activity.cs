@@ -28,6 +28,7 @@ class Activity
 		_duration = int.Parse(Console.ReadLine() ?? "30");
 		Console.Clear();
 		Console.WriteLine("Get ready...");
+		Spinner(5);
 		
 	}
 

@@ -15,7 +15,6 @@ class BreathingActivity : Activity
 	public void Run()
 	{
 		DisplayStartingMessage();
-		Spinner(5);
 		DateTime futureTime = DateTime.Now.AddSeconds(_duration);
 
 		while (DateTime.Now <= futureTime)

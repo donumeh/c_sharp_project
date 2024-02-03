@@ -4,7 +4,7 @@ class Program
 {
 	static void Main(string[] args)
 	{
-		BreathingActivity newActivity = new BreathingActivity();
+		ListingActivity newActivity = new ListingActivity();
 
 		newActivity.Run();
 
