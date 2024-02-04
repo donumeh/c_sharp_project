@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 // Reflecting Class
 class ReflectingActivity : Activity
@@ -30,6 +31,7 @@ class ReflectingActivity : Activity
 		ShowCountDown(5);
 		DisplayQuestions();
 		DisplayEndingMessage();
+		SaveToFile();
 	}
 
 	public string GetRandomPrompt()
@@ -83,6 +85,19 @@ class ReflectingActivity : Activity
 			Console.Write($"> {ques} ");
 			Spinner(15);
 			Console.WriteLine();
+		}
+	}
+
+	public void SaveToFile()
+	{
+		string fileName = "reflectingActivity.txt";
+
+		using (StreamWriter outputFile = new StreamWriter(fileName))
+		{
+			string currentTime = DateTime.Now.ToString("MM/dd/yyyy");
+
+			outputFile.WriteLine($"{_name}: {currentTime}");
+			outputFile.WriteLine($"You have completed {_duration} of the {_name}.");
 		}
 	}
 }

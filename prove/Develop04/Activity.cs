@@ -38,7 +38,7 @@ class Activity
 		Console.WriteLine("\nWell done!!");
 		Spinner(5);
 		Console.WriteLine();
-		Console.WriteLine($"You have completed another {_duration} seconds of the Breathing Activity");
+		Console.WriteLine($"You have completed another {_duration} seconds of the {_name}.");
 		Spinner(5);
 	}
 
@@ -76,5 +76,4 @@ class Activity
 			Console.Write("\b \b");
 		}
 	}
-
 }

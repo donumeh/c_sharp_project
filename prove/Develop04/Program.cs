@@ -1,5 +1,7 @@
 using System;
 
+// Exceeded requirement by saving logs to file
+// Compile with .Net 8.0
 class Program
 {
 	static void Main(string[] args)

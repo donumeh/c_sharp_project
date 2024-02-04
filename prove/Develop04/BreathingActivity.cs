@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 // Breathing Activity Class
 
@@ -27,5 +28,20 @@ class BreathingActivity : Activity
 		}
 		DisplayEndingMessage();
 		Spinner(5);
+		SaveToFile();
+	}
+
+	// Showing creativity or Exceeding Requirement
+	protected void SaveToFile()
+	{
+		string fileName = "breathingActivity.txt";
+
+		using (StreamWriter outputFile = new StreamWriter(fileName))
+		{
+			string currentTime = DateTime.Now.ToString("MM/dd/yyy");
+
+			outputFile.WriteLine($"{_name}: {currentTime}");
+			outputFile.WriteLine($"         You have completed {_duration} seconds of {_name}.");
+		}
 	}
 }

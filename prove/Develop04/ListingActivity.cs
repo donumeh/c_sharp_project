@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 
 // Listing Activity
@@ -19,14 +20,17 @@ class ListingActivity : Activity
 	// Run Method
 	public void Run()
 	{
+		List<string> saveList = new List<string>();
+
 		DisplayStartingMessage();
 		GetRandomPrompt();
 		Console.Write("You may begin in: ");
 		ShowCountDown(5);
 		Console.WriteLine();
-		GetListFromUser();
+		saveList = GetListFromUser();
 		Console.WriteLine($"You listed {_count} item(s)!");
 		DisplayEndingMessage();
+		SaveToFile(saveList);
 	}
 
 	// Gets Random Prompt
@@ -62,5 +66,24 @@ class ListingActivity : Activity
 			_count++;
 		}
 		return (answers);
+	}
+
+	// Showing creativity or exceeing requirement
+	public void SaveToFile(List<string> lists)
+	{
+		string fileName = "listingActivity.txt";
+
+		using (StreamWriter outputFile = new StreamWriter(fileName))
+		{
+			string currentTime = DateTime.Now.ToString("MM/dd/yyyy");
+
+			outputFile.WriteLine($"{_name} : {currentTime}");
+
+			foreach (string s in lists)
+			{
+				outputFile.WriteLine($"       {s}");
+			}
+			outputFile.WriteLine($"You have completed {_duration} seconds of the {_name}.");
+		}
 	}
 }
