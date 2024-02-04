@@ -69,7 +69,7 @@ class ListingActivity : Activity
 	}
 
 	// Showing creativity or exceeing requirement
-	public void SaveToFile(List<string> lists)
+	private void SaveToFile(List<string> lists)
 	{
 		string fileName = "listingActivity.txt";
 

@@ -34,7 +34,7 @@ class ReflectingActivity : Activity
 		SaveToFile();
 	}
 
-	public string GetRandomPrompt()
+	private string GetRandomPrompt()
 	{
 		Random rand = new Random();
 		string startingLine = "Think of a time when you ";
@@ -48,7 +48,7 @@ class ReflectingActivity : Activity
 		return (startingLine + _prompts[index]);
 	}
 
-	public string GetRandomQuestion()
+	private string GetRandomQuestion()
 	{
 		Random rand = new Random();
 		int index;
@@ -67,13 +67,13 @@ class ReflectingActivity : Activity
 		return (_questions[index]);
 	}
 
-	public void DisplayPrompt()
+	private void DisplayPrompt()
 	{
 		string prompt = GetRandomPrompt();
 		Console.WriteLine($" --- {prompt} ---\n");
 	}
 
-	public void DisplayQuestions()
+	private void DisplayQuestions()
 	{
 		Console.Clear();
 		DateTime futureTime = DateTime.Now.AddSeconds(_duration);
@@ -88,7 +88,7 @@ class ReflectingActivity : Activity
 		}
 	}
 
-	public void SaveToFile()
+	private void SaveToFile()
 	{
 		string fileName = "reflectingActivity.txt";
 
