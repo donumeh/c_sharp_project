@@ -1,41 +1,49 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
-class ChecklistGoal : Goal
+namespace eternal_quest
 {
-	private int _amountCompleted;
-	private int _target;
-	private int _bonus;
+    class ChecklistGoal : Goal
+    {
+        public int _amountCompleted;
+        private int _target;
+        private int _bonus;
 
-	public ChecklistGoal(name, description, points) : base(name, description, points)
-	{
-		// Construction
-	}
+        public ChecklistGoal(string shortName, string description, int points, int target, int bonus, int currentScore = 0) : base(shortName, description, points, "checkListGoal", currentScore)
+        {
+            _amountCompleted = 0;
+            _target = target;
+            _bonus = bonus;
+        }
 
-	public override void RecordEvent()
-	{}
+        public override void RecordEvent()
+        {
+            _amountCompleted++;
 
-	public override bool IsComplete()
-	{}
+            int newSore = _amountCompleted * _points;
 
-	public override string GetDetailsString()
-	{}
+            SetCurrentScore(newSore);
+        }
 
-	public override string GetStringRepresentation()
-	{
-		string output = "";
+        public override int GetBonus()
+        {
+            return _bonus;
+        }
 
-		if (IsComplete() == true)
-		{
-			output = "[X] ";
-		}
-		else
-		{
-			output = "[ ] ";
-		}
+        public override bool IsComplete()
+        {
+            return _amountCompleted >= _target;
+        }
 
-		output += $"{_name} ({_description})";
+        public override string GetDetailsString()
+        {
+            return $"{_shortName} ({_description}) -- Currently completed {_amountCompleted}/{_target}";
+        }
 
-		return output;
-	}
-
+        public override string GetStringRepresentation()
+        {
+            return $"{nameof(ChecklistGoal)}:{_shortName},{_description},{_points},{_amountCompleted},{_target},{_bonus},{GetCurrentScore()}";
+        }
+    }
 }

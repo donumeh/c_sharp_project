@@ -1,22 +1,44 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
-class Goal
+namespace eternal_quest
 {
-	protected string _shortName;
-	protected string _description;
-	protected string _points;
+    abstract class Goal
+    {
+        protected string _shortName;
+        protected string _description;
+        public int _points;
+        private int _currentScore;
+        public string _goalType;
+
+        public Goal(string shortName, string description, int points, string goalType, int currentScore = 0)
+        {
+            _shortName = shortName;
+            _description = description;
+            _points = points;
+            _currentScore = currentScore;
+            _goalType = goalType;
+        }
 
 
-	public Goal(name, description, points)
-	{
-		_shortName = name;
-		_description = description;
-		_points = points;
-	}
+        public void SetCurrentScore(int points)
+        {
+            _currentScore = points;
+        }
 
-	public virtual void RecordEvent();
-	public virtual bool IsComplete();
-	public virtual string GetDetailsString();
-	public virtual string GetStringRepresentation();
+        public int GetCurrentScore()
+        {
+            return _currentScore;
+        }
+        public abstract void RecordEvent();
 
+        public abstract int GetBonus();
+
+        public abstract bool IsComplete();
+
+        public abstract string GetDetailsString();
+
+        public abstract string GetStringRepresentation();
+    }
 }

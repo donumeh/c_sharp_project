@@ -1,35 +1,39 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
-class SimpleGoal : Goal
+namespace eternal_quest
 {
-	private bool _isComplete;
+    class SimpleGoal : Goal
+    {
+        private bool _isComplete;
 
-	
-	public SimpleGoal(name, description, points) : base(name, description, points)
-	{
-		// Constructor
-	}
+        public SimpleGoal(string shortName, string description, int points, bool status = false, int currentScore = 0) : base(shortName, description, points, "simpleGoal", currentScore)
+        {
+            _isComplete = status;
+        }
 
-	public override void RecordEvent()
-	{}
+        public override void RecordEvent()
+        {
+            _isComplete = true;
 
-	public override bool IsComplete()
-	{}
+        }
 
-	public override string GetStringRepresentation()
-	{
-		string output = "";
+        public override int GetBonus() { return 0; }
 
-		if (IsComplete() == true)
-		{
-			output += "[X] ";
-		}
-		else
-		{
-			output += "[ ] ";
-		}
+        public override bool IsComplete()
+        {
+            return _isComplete;
+        }
 
-		output += $"{_name} ({_description})";
-		return output;
-	}
+        public override string GetDetailsString()
+        {
+            return $"{_shortName} ({_description})";
+        }
+
+        public override string GetStringRepresentation()
+        {
+            return $"{nameof(SimpleGoal)}:{_shortName},{_description},{_points},{_isComplete},{GetCurrentScore()}";
+        }
+    }
 }
